@@ -1,11 +1,13 @@
 import express from "express";
 import { AppDataSource } from "../database/datasource.js";
+import apiRouter from "./api/index.js";
 
 await (async () => {
   const app = express();
   const port = 3000;
 
   app.use(express.json());
+  app.use("/api", apiRouter);
   app.get("/", (req, res) => {
     res.send("Hello world");
   });
