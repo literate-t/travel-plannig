@@ -1,4 +1,5 @@
 import express from "express";
+import "reflect-metadata";
 import { AppDataSource } from "../database/datasource.js";
 import apiRouter from "./api/index.js";
 
