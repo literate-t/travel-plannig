@@ -25,11 +25,11 @@ cityRouter.get("/:city", async (req, res) => {
 
 cityRouter.post("/", async (req, res) => {
   const city = req.body as CityDto;
-
   try {
     const result = await CityRepository.save(City.ofDto(city));
     res.send(result);
   } catch (err) {
+    console.log("Error", err);
     res.status(500).send(err);
   }
 });

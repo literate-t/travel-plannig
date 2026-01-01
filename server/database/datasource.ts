@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import dotenvExpand from "dotenv-expand";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import * as entities from "../src/entity/index.js";
 
 dotenvExpand.expand(dotenv.config());
 
@@ -14,6 +15,6 @@ export const AppDataSource = new DataSource({
   database: process.env.POSTGRES_DB,
   synchronize: true,
   logging: false,
-  entities: ["dist/server/entity/**/*.js"],
-  migrations: ["dist/database/migration/**/*.js"],
+  entities: [...Object.values(entities)],
+  // migrations: ["dist/database/migration/**/*.js"],
 });
