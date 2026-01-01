@@ -16,11 +16,10 @@ await (async () => {
   try {
     await AppDataSource.initialize();
     console.log("Datasource succeeded");
+    app.listen(port, () => {
+      console.log(`Server is listening at http://localhost:${port}`);
+    });
   } catch (err) {
     console.error("Datasource failed");
   }
-
-  app.listen(port, () => {
-    console.log(`Server is listening at http://localhost:${port}`);
-  });
 })();
