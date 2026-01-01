@@ -6,13 +6,13 @@ export class City {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ type: "varchar" })
   name!: string;
 
-  @Column()
+  @Column({ type: "varchar" })
   city!: string;
 
-  @Column()
+  @Column({ type: "text" })
   description!: string;
 
   static of(name: string, city: string, description: string): City {
