@@ -10,7 +10,7 @@ export default {
       spacing: px0_200,
       borderRadius: px0_20,
       borderWidth: px0_20,
-      fontSize: px0_20,
+      fontSize: px0_200,
     },
     colors,
   },
