@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 const RegisterCity = lazy(() => import("@/pages/admin/RegisterCity"));
+const RegisterCounty = lazy(() => import("@/pages/admin/RegisterCountry"));
 const Home = lazy(() => import("@/pages/home/Home"));
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/admin">
             <Route path="register-city" element={<RegisterCity />} />
+            <Route path="register-country" element={<RegisterCounty />} />
           </Route>
         </Routes>
       </Suspense>
