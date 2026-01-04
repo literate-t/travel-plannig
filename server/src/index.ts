@@ -20,6 +20,7 @@ await (async () => {
       console.log(`Server is listening at http://localhost:${port}`);
     });
   } catch (err) {
+    console.error("Error", err);
     console.error("Datasource failed");
   }
 })();
