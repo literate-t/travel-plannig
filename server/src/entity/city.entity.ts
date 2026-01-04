@@ -2,6 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
@@ -43,7 +44,7 @@ export class City {
   @JoinColumn()
   coordinate!: CityCoordiate;
 
-  @OneToOne(() => Country)
+  @ManyToOne(() => Country)
   @JoinColumn()
   country!: Country;
 
