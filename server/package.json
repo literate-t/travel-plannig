@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:server": "tsx src/index.ts",
+    "dev:server": "tsx --watch src/index.ts",
     "migration:generate": "typeorm migration:generate -d database/datasource.ts",
     "migration:run": "typeorm migration:run -- -d database/datasource.ts"
   },
