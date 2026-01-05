@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { City } from "../entity/city.entity.js";
 import { CityRepository } from "../repository/city.repository.js";
-import { CityDto } from "../types.js";
+import { CounrtyRepository } from "../repository/country.repository.js";
+import { CreateCityDto } from "../types.js";
 
 const cityRouter = Router();
 
@@ -41,9 +41,22 @@ cityRouter.get("/:city", async (req, res) => {
 });
 
 cityRouter.post("/", async (req, res) => {
-  const city = req.body as CityDto;
+  const { countryCode, ...city } = req.body as CreateCityDto;
+  const findCountry = await CounrtyRepository.findOneBy({
+    code: countryCode,
+  });
+  if (!findCountry) {
+    res.status(404).send("Country not found");
+    return;
+  }
+
+  const newCity = CityRepository.create({
+    ...city,
+    country: findCountry,
+  });
+
   try {
-    const result = await CityRepository.save(City.ofDto(city));
+    const result = await CityRepository.insert(newCity);
     res.send(result);
   } catch (err) {
     console.log("Error", err);

@@ -1,45 +1,29 @@
-import { FormEvent } from "react";
+import { useRef } from "react";
 
 export default function RegisterCity() {
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const city = {
-      city: data.get("city") as string,
-      name: data.get("name") as string,
-      description: data.get("description") as string,
-    };
+  const ref = useRef<HTMLTextAreaElement>(null);
+  const handleClick = async () => {
+    const city = ref?.current?.value;
 
     const response = await fetch("/api/cities", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(city),
+      body: city,
     });
 
     if (response.ok) {
+      ref!.current!.value = "";
       alert("City registered");
     } else {
       alert("City registered failed");
     }
   };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        City:
-        <input type="text" name="city" />
-      </label>
-      <label>
-        Name:
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Description:
-        <input type="text" name="description" />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <div>
+      <textarea ref={ref}></textarea>
+      <button onClick={handleClick}>등록</button>
+    </div>
   );
 }

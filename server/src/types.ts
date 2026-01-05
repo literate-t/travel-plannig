@@ -1,4 +1,4 @@
-export interface CityDto {
+export interface CreateCityDto {
   code: string; // 도시 코드, 구분자 역할: seoul
   name: string; // 도시 한글 이름: 서울
   nameEn: string; // 도시 영문 이름: Seoul
@@ -11,7 +11,7 @@ export interface CityDto {
     lat: number;
     lng: number;
   };
-  country: CountryDto;
+  countryCode: string;
 }
 
 export interface CoordinateDto {

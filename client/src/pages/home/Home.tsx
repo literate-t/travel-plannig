@@ -1,11 +1,20 @@
+import Loading from "@/components/common/Loading";
 import NarrowLayout from "@/components/common/NarrowLayout";
 import CityList from "@/components/home/CityList";
 import FilterList from "@/components/home/FilterList";
 import SearchInput from "@/components/home/SearchInput";
-import { City } from "@/types";
+import { getCities } from "@/services/home";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
-  return (
+  const { isLoading, data } = useQuery({
+    queryKey: ["cities"],
+    queryFn: getCities,
+  });
+
+  return isLoading || !data ? (
+    <Loading />
+  ) : (
     <NarrowLayout className="flex flex-col items-center my-30">
       <div className="w-[339px] mb-24">
         <SearchInput onCompositionEnd={(value) => console.log(value)} />
@@ -13,34 +22,7 @@ export default function Home() {
       <div className="mb-21">
         <FilterList active="all" onChange={() => {}} />
       </div>
-      <CityList cities={dummy_city} />
+      <CityList cities={data} />
     </NarrowLayout>
   );
 }
-
-const dummy_city: City[] = [
-  {
-    city: "seoul",
-    name: "서울",
-    description: "서울입니다",
-    thumbnail: "https://picsum.photos/300/200?random=1",
-  },
-  {
-    city: "busan",
-    name: "부산",
-    description: "부산입니다",
-    thumbnail: "https://picsum.photos/300/200?random=2",
-  },
-  {
-    city: "jeju",
-    name: "제주",
-    description: "제주입니다",
-    thumbnail: "https://picsum.photos/300/200?random=3",
-  },
-  {
-    city: "gwangju",
-    name: "광주",
-    description: "광주입니다",
-    thumbnail: "https://picsum.photos/300/200?random=4",
-  },
-];
