@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { CityCoordiate } from "./coordinate.entity.js";
+import { CityCoordiate } from "../embedded/coordinate.js";
 import { Country } from "./country.entity.js";
 
 @Entity()
