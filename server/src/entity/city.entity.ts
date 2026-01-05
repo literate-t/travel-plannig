@@ -44,61 +44,62 @@ export class City {
   @JoinColumn()
   country!: Country;
 
-  static of(
-    code: string,
-    name: string,
-    nameEn: string,
-    thumbnail: string,
-    description: string,
-    timezone: string,
-    flighthour: number,
-    timezoneOffset: number,
-    coordinate: CoordinateDto,
-    country: CountryDto
-  ): City {
-    const newCity = new City();
-    newCity.code = code;
-    newCity.name = name;
-    newCity.nameEn = nameEn;
-    newCity.thumbnail = thumbnail;
-    newCity.description = description;
-    newCity.timezone = timezone;
-    newCity.flighthour = flighthour;
-    newCity.timezoneOffset = timezoneOffset;
+  // TODO: 필요가 생기면 다시 작성
+  // static of(
+  //   code: string,
+  //   name: string,
+  //   nameEn: string,
+  //   thumbnail: string,
+  //   description: string,
+  //   timezone: string,
+  //   flighthour: number,
+  //   timezoneOffset: number,
+  //   coordinate: CoordinateDto,
+  //   country: CountryDto
+  // ): City {
+  //   const newCity = new City();
+  //   newCity.code = code;
+  //   newCity.name = name;
+  //   newCity.nameEn = nameEn;
+  //   newCity.thumbnail = thumbnail;
+  //   newCity.description = description;
+  //   newCity.timezone = timezone;
+  //   newCity.flighthour = flighthour;
+  //   newCity.timezoneOffset = timezoneOffset;
 
-    const newCoord = new CityCoordiate();
-    newCoord.lat = coordinate.lat;
-    newCoord.lng = coordinate.lng;
-    newCity.coordinate = newCoord;
+  //   const newCoord = new CityCoordiate();
+  //   newCoord.lat = coordinate.lat;
+  //   newCoord.lng = coordinate.lng;
+  //   newCity.coordinate = newCoord;
 
-    const newCountry = new Country();
-    newCountry.code = country.code;
-    newCountry.name = country.name;
-    newCountry.nameEn = country.nameEn;
-    newCountry.voltage = country.voltage;
+  //   const newCountry = new Country();
+  //   newCountry.code = country.code;
+  //   newCountry.name = country.name;
+  //   newCountry.nameEn = country.nameEn;
+  //   newCountry.voltage = country.voltage;
 
-    const newVisa = new Visa();
-    newVisa.duration = country.visa.duration;
-    newVisa.required = country.visa.required;
-    newCountry.visa = newVisa;
-    newCountry.continent = country.continent;
-    newCity.country = newCountry;
+  //   const newVisa = new Visa();
+  //   newVisa.duration = country.visa.duration;
+  //   newVisa.required = country.visa.required;
+  //   newCountry.visa = newVisa;
+  //   newCountry.continent = country.continent;
+  //   newCity.country = newCountry;
 
-    return newCity;
-  }
+  //   return newCity;
+  // }
 
-  static ofDto(dto: CityDto): City {
-    return this.of(
-      dto.code,
-      dto.name,
-      dto.nameEn,
-      dto.thumbnail,
-      dto.description,
-      dto.timezone,
-      dto.flighthour,
-      dto.timezoneOffset,
-      dto.coordinate,
-      dto.country
-    );
-  }
+  // static ofDto(dto: CityDto): City {
+  //   return this.of(
+  //     dto.code,
+  //     dto.name,
+  //     dto.nameEn,
+  //     dto.thumbnail,
+  //     dto.description,
+  //     dto.timezone,
+  //     dto.flighthour,
+  //     dto.timezoneOffset,
+  //     dto.coordinate,
+  //     dto.country
+  //   );
+  // }
 }
