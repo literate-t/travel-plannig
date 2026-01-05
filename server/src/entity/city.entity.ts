@@ -32,7 +32,7 @@ export class City {
   timezone!: string;
 
   @Column({ type: "int8" })
-  flighthour!: number;
+  flightHour!: number;
 
   @Column({ type: "int8" })
   timezoneOffset!: number;
