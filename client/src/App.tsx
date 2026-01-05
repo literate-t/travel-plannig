@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import ModalProvider from "./components/common/ModalProvider";
 const RegisterCity = lazy(() => import("@/pages/admin/RegisterCity"));
 const RegisterCounty = lazy(() => import("@/pages/admin/RegisterCountry"));
 const Home = lazy(() => import("@/pages/home/Home"));
@@ -22,6 +23,7 @@ function App() {
             </Route>
           </Routes>
         </Suspense>
+        <ModalProvider />
       </QueryClientProvider>
     </BrowserRouter>
   );
