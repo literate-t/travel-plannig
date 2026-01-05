@@ -3,13 +3,10 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { CityDto, CoordinateDto, CountryDto } from "../types.js";
 import { CityCoordiate } from "./coordinate.entity.js";
 import { Country } from "./country.entity.js";
-import { Visa } from "./visa.entity.js";
 
 @Entity()
 export class City {
@@ -40,8 +37,7 @@ export class City {
   @Column({ type: "int8" })
   timezoneOffset!: number;
 
-  @OneToOne(() => CityCoordiate)
-  @JoinColumn()
+  @Column(() => CityCoordiate)
   coordinate!: CityCoordiate;
 
   @ManyToOne(() => Country)

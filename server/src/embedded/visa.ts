@@ -1,10 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column } from "typeorm";
 
-@Entity()
 export class Visa {
-  @PrimaryGeneratedColumn()
-  id!: number;
-
   @Column({ type: "boolean" })
   required!: boolean;
 

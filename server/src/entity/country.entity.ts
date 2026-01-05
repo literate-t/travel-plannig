@@ -1,12 +1,6 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Visa } from "../embedded/visa.js";
 import { Continent, CountryDto, VisaDto } from "../types.js";
-import { Visa } from "./visa.entity.js";
 
 @Entity()
 export class Country {
@@ -25,8 +19,7 @@ export class Country {
   @Column({ type: "int8" })
   voltage!: number;
 
-  @OneToOne(() => Visa, { cascade: true })
-  @JoinColumn()
+  @Column(() => Visa)
   visa!: Visa;
 
   @Column({ type: "varchar" })
