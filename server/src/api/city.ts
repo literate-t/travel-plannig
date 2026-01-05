@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { ILike } from "typeorm";
 import { CityRepository } from "../repository/city.repository.js";
 import { CounrtyRepository } from "../repository/country.repository.js";
 import { CreateCityDto } from "../types.js";
@@ -19,6 +20,27 @@ cityRouter.get("/", async (_req, res) => {
   } catch (err) {
     res.status(500).send(err);
   }
+});
+
+cityRouter.get("/search", async (req, res) => {
+  const { q } = req.query;
+  if (typeof q !== "string") {
+    return res.status(400).send("Invalid Query");
+  }
+
+  const cities = await CityRepository.find({
+    where: {
+      name: ILike(`%${q}%`),
+    },
+    relations: ["country"],
+  });
+
+  if (!cities || cities.length === 0) {
+    res.status(400).send("No cities");
+  }
+
+  // to plain object
+  res.send([...cities]);
 });
 
 cityRouter.get("/:city", async (req, res) => {
