@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function CityList({ cities }: Props) {
-  const { openModal } = useModalStore();
+  const openModal = useModalStore((state) => state.openModal);
   const openDetailModal = (city: CityDto) => {
     openModal(({ onClose }) => (
       <Modal>

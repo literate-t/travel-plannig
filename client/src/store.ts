@@ -12,7 +12,7 @@ type Action = {
 };
 
 // TODO: useDateStore으로 변경해보기
-export const store = create<State & Action>()((set) => ({
+export const usePlanStore = create<State & Action>((set) => ({
   startDate: null,
   endDate: null,
   setStartDate: (date) => set({ startDate: date }),
@@ -28,7 +28,7 @@ type ModalAction = {
   closeModal: (index: number) => void;
 };
 
-export const useModalStore = create<ModalState & ModalAction>()((set) => ({
+export const useModalStore = create<ModalState & ModalAction>((set) => ({
   modals: [],
   openModal: (modal) => set((state) => ({ modals: [...state.modals, modal] })),
   closeModal: (index) =>
