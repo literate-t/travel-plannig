@@ -11,6 +11,8 @@ const colors = {
   "gray-700": "#4A4A4A",
   "gray-800": "#303030",
   "gray-900": "#1A1A1A",
+  bg: "#F6F6F9",
+  bg2: "#FBFBFF",
   transparent: "transparent",
 };
 

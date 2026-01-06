@@ -7,6 +7,7 @@ import ModalProvider from "./components/common/ModalProvider";
 const RegisterCity = lazy(() => import("@/pages/admin/RegisterCity"));
 const RegisterCounty = lazy(() => import("@/pages/admin/RegisterCountry"));
 const Home = lazy(() => import("@/pages/home/Home"));
+const PlanCity = lazy(() => import("@/pages/plan/City"));
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ function App() {
               <Route path="register-city" element={<RegisterCity />} />
               <Route path="register-country" element={<RegisterCounty />} />
             </Route>
+            <Route path="/plan/:city" element={<PlanCity />} />
           </Routes>
         </Suspense>
         <ModalProvider />
