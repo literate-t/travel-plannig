@@ -5,7 +5,7 @@ export default function ModalProvider() {
   return (
     <>
       {modals.map((Modal, index) => (
-        <Modal onClose={() => closeModal(index)} />
+        <Modal key={index} onClose={() => closeModal(index)} />
       ))}
     </>
   );
