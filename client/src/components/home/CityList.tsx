@@ -1,20 +1,41 @@
+import CloseIcon from "@/assets/icons/close.svg?react";
+import { useModalStore } from "@/store";
 import { CityDto } from "@/types";
+import Modal, { ModalBackdrop, ModalPanel } from "../common/Modal";
 import Card from "./Card";
+import CityDetail from "./CityDetail";
 
 interface Props {
   cities: CityDto[];
 }
 
 export default function CityList({ cities }: Props) {
+  const { openModal } = useModalStore();
+  const openDetailModal = (city: CityDto) => {
+    openModal(({ onClose }) => (
+      <Modal>
+        <ModalBackdrop />
+        <ModalPanel>
+          <div className="rounded-20 border border-gray-100 bg-white px-28 pt-50 pb-30 relative w-[655px] min-h-[300px]">
+            <button onClick={onClose} className="absolute right-28 top-22">
+              <CloseIcon className="w-24 h-24" />
+            </button>
+            <CityDetail city={city} />
+          </div>
+        </ModalPanel>
+      </Modal>
+    ));
+  };
   return (
     <div className="flex flex-wrap justify-between gap-y-28 items-start w-full">
       {cities.map((city) => (
-        <Card
-          key={city.code}
-          title={city.nameEn.toLocaleUpperCase()}
-          description={`${city.country.name} ${city.name}`}
-          image={city.thumbnail}
-        />
+        <button onClick={() => openDetailModal(city)} key={city.code}>
+          <Card
+            title={city.nameEn.toLocaleUpperCase()}
+            description={`${city.country.name} ${city.name}`}
+            image={city.thumbnail}
+          />
+        </button>
       ))}
     </div>
   );
