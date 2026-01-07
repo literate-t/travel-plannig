@@ -4,6 +4,7 @@ import RightArrowIcon from "@/assets/icons/right-arrow.svg?react";
 import VisaIcon from "@/assets/icons/visa.svg?react";
 import VoltageIcon from "@/assets/icons/volt.svg?react";
 import { CityDto } from "@/types";
+import Button from "../common/Button";
 
 interface Props {
   city: CityDto;
@@ -80,10 +81,10 @@ export default function CityDetail({ city }: Props) {
         />
       </div>
       <div>
-        <button className="w-185 bg-black text-white text-16 font-medium rounded-6 py-14 flex justify-center items-center">
+        <Button className="w-185 flex justify-center items-center">
           <span className="mr-5 ml-8">일정 만들기</span>
           <RightArrowIcon className="w-18 h-18" />
-        </button>
+        </Button>
       </div>
     </div>
   );
