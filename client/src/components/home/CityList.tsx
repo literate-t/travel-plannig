@@ -15,13 +15,11 @@ export default function CityList({ cities }: Props) {
     openModal(({ onClose }) => (
       <Modal>
         <ModalBackdrop />
-        <ModalPanel>
-          <div className="rounded-20 border border-gray-100 bg-white px-28 pt-50 pb-30 relative w-[655px] min-h-[300px]">
-            <button onClick={onClose} className="absolute right-28 top-22">
-              <CloseIcon className="w-24 h-24" />
-            </button>
-            <CityDetail city={city} />
-          </div>
+        <ModalPanel className="pt-50 pb-30 relative w-[655px] min-h-[300px]">
+          <button onClick={onClose} className="absolute right-28 top-22">
+            <CloseIcon className="w-24 h-24" />
+          </button>
+          <CityDetail city={city} />
         </ModalPanel>
       </Modal>
     ));
