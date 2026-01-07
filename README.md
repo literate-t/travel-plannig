@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# 여행 계획하기
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 기능
 
-Currently, two official plugins are available:
+- 일정 등록
+- 지도 검색
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 주안점
 
-## Expanding the ESLint configuration
+- 모노레포
+  - 루트 package에서 각각 클라이언트/서버를 구동
+- DB 서버는 docker-compose로 컨테이너 관리
+- 모달 창의 중앙 관리(관심사 분리)
+- 렌더링 최적화
+- 달력 커스터마이징
+  - react-datepicker 사용
+- 배포
+  - 프론트엔드는 vercel
+  - 백엔드는 로컬 PC
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 기술 스택
 
-- Configure the top-level `parserOptions` property like this:
+### 프론트엔드
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- react 18.2
+- vite 5.2.0
+- tailwindcss 3.4.3
+- zustand 4.5.4
+- tanstack/react-query 5.29.2
+- react-router-dom 6.25.1
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 백엔드
+
+- express 4.19.2
+- typeorm 0.3.28
+- pg 8.16.3
+- tsx 4.21.0
