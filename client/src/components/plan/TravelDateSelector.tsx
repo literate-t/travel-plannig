@@ -1,18 +1,23 @@
 import CalendarLeftArrow from "@/assets/icons/CalendarLeftArrow.svg?react";
 import { ko } from "date-fns/locale";
-import { useState } from "react";
 import DatePicker, { ReactDatePickerCustomHeaderProps } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./TravelDateSelector.css";
 
-export default function TravelDateSelector() {
-  const today = new Date();
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+interface Props {
+  startDate: Date | null;
+  endDate: Date | null;
+  onChange: (start: Date | null, end: Date | null) => void;
+}
 
+export default function TravelDateSelector({
+  startDate,
+  endDate,
+  onChange,
+}: Props) {
+  const today = new Date();
   const handleChange = ([start, end]: [Date | null, Date | null]) => {
-    setStartDate(start);
-    setEndDate(end);
+    onChange(start, end);
   };
 
   const renderHeader = ({
