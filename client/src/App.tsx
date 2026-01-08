@@ -1,4 +1,5 @@
 import Loading from "@/components/common/Loading";
+import "@/utils/date";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
