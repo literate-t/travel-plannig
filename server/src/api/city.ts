@@ -2,7 +2,8 @@ import { Router } from "express";
 import { ILike } from "typeorm";
 import { CityRepository } from "../repository/city.repository.js";
 import { CounrtyRepository } from "../repository/country.repository.js";
-import { CreateCityDto } from "../types.js";
+import { PlaceRepository } from "../repository/place.repository.js";
+import { CreateCityDto, PlaceDto } from "../types.js";
 
 const cityRouter = Router();
 
@@ -80,6 +81,68 @@ cityRouter.post("/", async (req, res) => {
   try {
     const result = await CityRepository.insert(newCity);
     res.send(result);
+  } catch (err) {
+    console.log("Error", err);
+    res.status(500).send(err);
+  }
+});
+
+cityRouter.post("/:city/places", async (req, res) => {
+  const place = req.body as PlaceDto;
+  const city = req.params.city;
+  const findCity = await CityRepository.findOne({
+    where: {
+      code: city,
+    },
+  });
+
+  if (!findCity) {
+    return res.status(500).send("City not found");
+  }
+
+  const newPlace = PlaceRepository.create({
+    ...place,
+    city: findCity,
+  });
+
+  try {
+    const result = await PlaceRepository.insert(newPlace);
+    res.send(result);
+  } catch (err) {
+    console.log("Error", err);
+    res.status(500).send(err);
+  }
+});
+
+cityRouter.get("/:city/places", async (req, res) => {
+  const city = req.params.city;
+  const category = req.query.category as PlaceDto["category"];
+  const q = req.query.q as string;
+
+  try {
+    const findCity = await CityRepository.findOne({
+      where: {
+        code: city,
+      },
+    });
+
+    if (!findCity) {
+      return res.status(404).send("Not found City");
+    }
+
+    const findPlaces = await PlaceRepository.find({
+      where: {
+        city: findCity,
+        category: category ?? undefined,
+        name: q ? ILike(`%${q}%`) : undefined,
+      },
+    });
+
+    if (findPlaces) {
+      res.send(findPlaces);
+    } else {
+      res.status(500).send("Not found places");
+    }
   } catch (err) {
     console.log("Error", err);
     res.status(500).send(err);
