@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import Wizard from "../common/Wizard";
 import DailyTimeController from "./DailyTimeController";
+import PlaceController from "./PlaceController";
 import PlanControllerHeader from "./PlanControllerHeader";
 
 export default function PlanController() {
@@ -20,7 +21,7 @@ export default function PlanController() {
             title: "장소 선택",
             content: () => (
               <Layout>
-                <div>장소 선택</div>
+                <PlaceController />
               </Layout>
             ),
           },
@@ -40,7 +41,7 @@ export default function PlanController() {
 
 function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="flex flex-col gap-y-18 px-24 py-30">
+    <div className="flex flex-col gap-y-18 px-24 py-30 overflow-y-hidden">
       <PlanControllerHeader />
       {children}
     </div>

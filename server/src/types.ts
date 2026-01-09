@@ -41,3 +41,19 @@ export interface CountryDto {
   visa: VisaDto; // 유효 기간
   continent: Continent;
 }
+
+export type Category = "attraction" | "restaurant" | "cafe";
+
+export interface PlaceDto {
+  name: string;
+  thumbnail: string;
+  category: Category;
+  address: string;
+  coordinate: {
+    lat: number;
+    lng: number;
+  };
+  likes: number;
+  rating: number;
+  city: string;
+}
