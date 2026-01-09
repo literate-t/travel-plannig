@@ -3,11 +3,11 @@ import ClockIcon from "@/assets/icons/clock.svg?react";
 import RightArrowIcon from "@/assets/icons/right-arrow.svg?react";
 import VisaIcon from "@/assets/icons/visa.svg?react";
 import VoltageIcon from "@/assets/icons/volt.svg?react";
-import { CityDto } from "@/types";
+import { City } from "@/types";
 import Button from "../common/Button";
 
 interface Props {
-  city: CityDto;
+  city: City;
 }
 
 export default function CityDetail({ city }: Props) {

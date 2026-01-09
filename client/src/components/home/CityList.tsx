@@ -1,17 +1,17 @@
 import CloseIcon from "@/assets/icons/close.svg?react";
 import { useModalStore } from "@/store";
-import { CityDto } from "@/types";
+import { City } from "@/types";
 import Modal, { ModalBackdrop, ModalPanel } from "../common/Modal";
 import Card from "./Card";
 import CityDetail from "./CityDetail";
 
 interface Props {
-  cities: CityDto[];
+  cities: City[];
 }
 
 export default function CityList({ cities }: Props) {
   const openModal = useModalStore((state) => state.openModal);
-  const openDetailModal = (city: CityDto) => {
+  const openDetailModal = (city: City) => {
     openModal(({ onClose }) => (
       <Modal>
         <ModalBackdrop />

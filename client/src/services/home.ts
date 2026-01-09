@@ -1,6 +1,6 @@
-import { CityDto } from "@/types";
+import { City } from "@/types";
 
-export const getCities = async (): Promise<CityDto[]> => {
+export const getCities = async (): Promise<City[]> => {
   const response = await fetch("/api/cities");
   if (!response.ok) {
     throw new Error("Failed to fetch");
@@ -8,7 +8,7 @@ export const getCities = async (): Promise<CityDto[]> => {
   return response.json();
 };
 
-export const getSearchedCities = async (search: string): Promise<CityDto[]> => {
+export const getSearchedCities = async (search: string): Promise<City[]> => {
   const response = await fetch(`/api/cities/search?q=${search}`);
   if (!response.ok) {
     throw new Error("Failed to fetch");

@@ -1,4 +1,4 @@
-export interface CityDto {
+export interface City {
   code: string; // 도시 코드, 구분자 역할: seoul
   name: string; // 도시 한글 이름: 서울
   nameEn: string; // 도시 영문 이름: Seoul
@@ -11,19 +11,19 @@ export interface CityDto {
     lat: number;
     lng: number;
   };
-  country: CountryDto;
+  country: Country;
 }
 
-export interface CountryDto {
+export interface Country {
   code: string; // 국가 코드: kr
   name: string; // 국가 한글 이름
   nameEn: string; // 국가 영문 이름: Korea
   voltage: number; // 전압
-  visa: VisaDto; // 유효 기간
+  visa: Visa; // 유효 기간
   continent: Continent;
 }
 
-export interface VisaDto {
+export interface Visa {
   required: boolean;
   duration: number;
 }
@@ -36,3 +36,19 @@ export type Continent =
   | "Europe"
   | "Africa"
   | "Oceania";
+
+export type Category = "attraction" | "restaurant" | "cafe";
+
+export interface Place {
+  name: string;
+  thumbnail: string;
+  category: Category;
+  address: string;
+  coordinate: {
+    lat: number;
+    lng: number;
+  };
+  likes: number;
+  rating: number;
+  city: string;
+}
