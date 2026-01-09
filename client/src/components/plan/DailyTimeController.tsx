@@ -9,7 +9,11 @@ import { format } from "date-fns";
 import { useState } from "react";
 import Button from "../common/Button";
 
-export default function DailyTimeSelector() {
+export default function DailyTimeController({
+  onCompleted,
+}: {
+  onCompleted: () => void;
+}) {
   const [shown, setShown] = useState<boolean>(false);
   const { setDailyTime, dailyTimes } = usePlanStore((state) => ({
     dailyTimes: state.dailyTimes,
@@ -86,7 +90,9 @@ export default function DailyTimeSelector() {
               </tbody>
             </table>
             <div>
-              <Button className="px-47">시간 설정 완료</Button>
+              <Button onClick={onCompleted} className="px-47">
+                시간 설정 완료
+              </Button>
             </div>
           </div>
         </>
