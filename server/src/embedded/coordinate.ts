@@ -1,6 +1,6 @@
 import { Column } from "typeorm";
 
-export class CityCoordiate {
+export class Coordinate {
   @Column({
     type: "decimal",
     precision: 10,

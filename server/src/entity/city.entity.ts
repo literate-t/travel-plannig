@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { CityCoordiate } from "../embedded/coordinate.js";
+import { Coordinate } from "../embedded/coordinate.js";
 import { Country } from "./country.entity.js";
 
 @Entity()
@@ -37,8 +37,8 @@ export class City {
   @Column({ type: "int8" })
   timezoneOffset!: number;
 
-  @Column(() => CityCoordiate)
-  coordinate!: CityCoordiate;
+  @Column(() => Coordinate)
+  coordinate!: Coordinate;
 
   @ManyToOne(() => Country)
   @JoinColumn()
